@@ -1,0 +1,31 @@
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord Printer.exe
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord Printer.deps.json
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord Printer.runtimeconfig.json
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord Printer.runtimeconfig.dev.json
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord Printer.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\ref\Discord Printer.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord Printer.pdb
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord.Net.Commands.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord.Net.Core.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord.Net.Rest.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord.Net.Webhook.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord.Net.WebSocket.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\System.Interactive.Async.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\System.Linq.Async.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\obj\Debug\net5.0\Discord Printer.csprojAssemblyReference.cache
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\obj\Debug\net5.0\Discord Printer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\obj\Debug\net5.0\Discord Printer.AssemblyInfoInputs.cache
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\obj\Debug\net5.0\Discord Printer.AssemblyInfo.cs
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\obj\Debug\net5.0\Discord Printer.csproj.CoreCompileInputs.cache
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\obj\Debug\net5.0\Discord Printer.csproj.CopyComplete
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\obj\Debug\net5.0\Discord Printer.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\obj\Debug\net5.0\ref\Discord Printer.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\obj\Debug\net5.0\Discord Printer.pdb
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\obj\Debug\net5.0\Discord Printer.genruntimeconfig.cache
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\Discord.Addons.Interactive.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\System.Drawing.Common.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\kenny\source\repos\Discord Printer\Discord Printer\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
