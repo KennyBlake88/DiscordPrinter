@@ -5,14 +5,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using System.Drawing;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 
 namespace Discord_Printer.Modules
 {
     public abstract class Printer
     {
-        private static System.ComponentModel.Container components;
-        private static StreamReader streamToPrint;
-        private static PrintDocument pd;
   
         //private static PrintServer printServer;
         public static Task initialize()
@@ -23,28 +22,31 @@ namespace Discord_Printer.Modules
                 if (printer.Contains("HP"))
                 {
                    Console.WriteLine($"Printer Found: " + printer);
-                    
                 }
             }
             return Task.CompletedTask;
         }
 
-        public static async Task printImage(Picture i)
+        public static async Task printImage(string fn)
         {
-            streamToPrint = new StreamReader(i.getFile());
-            try
-            { 
-                PrintDocument pd = new PrintDocument();
-                pd.PrintPage += (thesender, ev) => {
-                    ev.Graphics.DrawImage(Image.FromFile(i.getFile()),
-                    //This is to keep image in margins of the Page.
-                    new PointF(ev.MarginBounds.Left, ev.MarginBounds.Top));
-                };
-                pd.Print();
-
-            } catch (InvalidPrinterException ex)
+            using (var streamToPrint = new StreamReader(fn))
             {
-                Console.WriteLine(ex.Message);
+                try
+                {
+                    PrintDocument pd = new PrintDocument();
+                    pd.DefaultPageSettings.Landscape = true;
+                    pd.PrintPage += (thesender, ev) =>
+                    {
+                        ev.Graphics.DrawImage(Image.FromFile(fn),
+                        //This is to keep image in margins of the Page.
+                        ev.MarginBounds);
+                    };
+                    pd.Print();
+                }
+                catch (InvalidPrinterException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }

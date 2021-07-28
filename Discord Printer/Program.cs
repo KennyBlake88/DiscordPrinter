@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Discord;
@@ -7,10 +8,14 @@ using Discord.WebSocket;
 using Discord_Printer.Modules;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace Discord_Printer
 {
     class Program
     {
+        private static string t1;
+        private static string t2;
+        private static DiscordSocketConfig config;
         public static void Main(string[] args) => new Program().RunBotAsync().GetAwaiter().GetResult();
 
         public static DiscordSocketClient _client;
@@ -19,29 +24,49 @@ namespace Discord_Printer
 
         public async Task RunBotAsync()
         {
-            _client = new DiscordSocketClient();
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            await initialize();
+            _client = new DiscordSocketClient(config);
             _commands = new CommandService();
             _services = new ServiceCollection()
                 .AddSingleton(_client)
                 .AddSingleton(_commands)
                 .BuildServiceProvider();
 
-            string token = "ODI3NTA0ODE5ODAzMzg5OTYy.YGb_6w.yQjMRFs7_ROd4qewB1LCck9tP6E";
+
 
             _client.Log += _client_Log;
             _client.MessageReceived += MessageReceiver.HandleMessageReceived;
+            _client.ReactionAdded += BestImageGetter.addMessageReactionCount;
+            _client.ReactionRemoved += BestImageGetter.subMessageReactionCount;
 
+            await Picture.initializeAzure(t2);
             await RegisterCommandsAsync();
-            await _client.LoginAsync(TokenType.Bot, token);
+            await _client.LoginAsync(TokenType.Bot, t1);
             await Printer.initialize();
             await _client.StartAsync();
-                
-            
+
+
 
             await Task.Delay(-1);
         }
 
+        private Task initialize()
+        {
+            config = new DiscordSocketConfig
+            {
+                AlwaysDownloadUsers = true,
+                MessageCacheSize = 100
+            };
 
+            using (StreamReader inputFile = new StreamReader("C:\\Users\\kenny\\source\\repos\\Discord Printer\\Discord Printer\\Modules\\secrets.txt"))
+            {
+                t1 = inputFile.ReadLine();
+                t2 = inputFile.ReadLine();
+                Console.WriteLine($"t1: {t1} t2: {t2}");
+            }
+            return Task.CompletedTask;
+        }
 
         private Task _client_Log(LogMessage arg)
         {
@@ -59,21 +84,24 @@ namespace Discord_Printer
 
         private async Task HandleCommandAsync(SocketMessage arg)
         {
-            var message = arg as SocketUserMessage;
-            var context = new SocketCommandContext(_client, message);
-            if (message.Author.IsBot)
+            if (arg is SocketUserMessage)
             {
-                return;   
+                var message = arg as SocketUserMessage;
+                var context = new SocketCommandContext(_client, message);
+                if (message.Author.IsBot)
+                {
+                    return;
+                }
+
+                int argPos = 0;
+                if (message.HasStringPrefix("=", ref argPos))
+                {
+                    var result = await _commands.ExecuteAsync(context, argPos, _services);
+                    if (!result.IsSuccess) Console.WriteLine(result.ErrorReason);
+                }
             }
-
-            int argPos = 0;
-            if (message.HasStringPrefix("&", ref argPos))
-            {
-                var result = await _commands.ExecuteAsync(context, argPos, _services);
-                if (!result.IsSuccess) Console.WriteLine(result.ErrorReason);
-            }
-        } 
-
-
+          
+        }
+       
     }
 }
